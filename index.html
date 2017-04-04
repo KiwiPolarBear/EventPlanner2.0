@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Event Planner</title>
+		
+		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./bootstrap.min.css">
+		
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+		<script type="text/javascript" src="./xmlToJSON.js"></script>
+		<script type="text/javascript" src="./jquery.min.js"></script>
+		<script type="text/javascript" src="./bootstrap.min.js"></script>
+		<script type="text/javascript" src="./renderer.js"></script>   
+
+		<script>if (window.module) module = window.module;</script>
+  </head>
+  <body>
+		
+		<nav class="navbar navbar-inverse bg-inverse" id="navBar">
+			<div id="title-bar-btns">
+				<button type="button" class="btn btn-secondary" id="min-btn">-</button>
+				<button type="button" class="btn btn-secondary" id="max-btn">+</button>
+				<button type="button" class="btn btn-secondary" id="close-btn">x</button>
+			</div>
+		</nav>
+		
+		<div id="content">
+			
+			<h2 style="margin: 15px">Events:</h2>
+		
+			<div id="eventsDiv"></div>
+		
+		</div>
+		
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+
+		<!--
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+		-->
+		
+  </body>
+</html>

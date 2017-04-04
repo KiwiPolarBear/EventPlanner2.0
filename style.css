@@ -1,0 +1,41 @@
+#navBar {
+ 	-webkit-app-region: drag;
+	border-radius: 0px;
+	height: 40px;
+}
+
+#content {
+	margin: 15px;
+	margin-top: 65px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+}
+
+#eventsDiv {
+	overflow-y:auto;
+	margin: 15px;
+	margin-top: 65px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+}
+
+#title-bar-btns {
+	-webkit-app-region: no-drag;
+	position: fixed;
+	top: 0px;
+	right: 6px;
+}
+
+#min-btn, #max-btn, #close-btn {
+	border-radius: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	width: 40px;
+	height: 35px;
+}
