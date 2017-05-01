@@ -14,15 +14,46 @@
 	position: absolute;
 }
 
+#titleBar {
+	padding: 5px;
+	margin: 5px;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	border: solid;
+}
+
+#calenderDiv {
+	padding: 5px;
+	float: right;
+	margin: 5px;
+	margin-top: 70px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	width: 160px;
+	overflow: hidden;
+	border: solid;
+}
+
 #eventsDiv {
-	overflow-y:auto;
-	margin: 15px;
-	margin-top: 65px;
+	padding: 5px;
+	margin: 5px;
+	margin-top: 70px;
+	margin-right: 180px;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	position: absolute;
+	overflow-y:auto;
+	border: solid;
+}
+
+#addEventButton {
+	float: right;
 }
 
 #title-bar-btns {
