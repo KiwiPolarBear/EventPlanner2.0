@@ -12,6 +12,7 @@ var currentEvents = [];
 function init() {
 	initButtons();
 	initLoadEvents();
+	initModal();
 }
 
 function initLoadEvents() {
@@ -63,7 +64,7 @@ function saveEvents() {
 	fs.writeFileSync((os.homedir() + "/Saved Events/events.json"), JSON.stringify(currentEvents));
 }
 
-function loadEventsAsJSON(filepath, callback){
+function loadEventsAsJSON(filepath, callback) {
 	fs.readFile(filepath, 'utf-8', function (err, data) {
 		if (err) {
 			callback(false);
@@ -75,7 +76,7 @@ function loadEventsAsJSON(filepath, callback){
 	});
 }
 
-function loadEventsAsXML(filepath, callback){
+function loadEventsAsXML(filepath, callback) {
 	fs.readFile(filepath, 'utf-8', function (err, data) {
 		if(err) {
 			callback(false);
@@ -87,8 +88,30 @@ function loadEventsAsXML(filepath, callback){
 	});
 }
 
+function addEvent(title, date, time) {
+	currentEvents.push({
+		"Title": [
+			{"_text" : title}
+		],
+		"Date": [
+			 {"_text" : date}
+		], 
+		"Time": [
+			{"_text" : time}
+		],
+		"Finished": [
+			 {"_text" : false}
+		]
+	})
+	saveEvents();
+	displayEvents();
+}
+
 document.onreadystatechange = function () {
 	if (document.readyState == "complete") {
 		init(); 
 	}
 };
+
+
+

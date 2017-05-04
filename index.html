@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <title>Event Planner</title>
 		
-		<link rel="stylesheet" href="./style.css">
-		<link rel="stylesheet" href="./bootstrap.min.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
 		
 		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-		<script type="text/javascript" src="./xmlToJSON.js"></script>
-		<script type="text/javascript" src="./jquery.min.js"></script>
-		<script type="text/javascript" src="./bootstrap.min.js"></script>
-		<script type="text/javascript" src="./renderer.js"></script>   
+		<script type="text/javascript" src="./js/xmlToJSON.js"></script>
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./js/modal.js"></script>    
+		<script type="text/javascript" src="./js/time.js"></script>    
+		<script type="text/javascript" src="./js/renderer.js"></script>    
 
 		<script>if (window.module) module = window.module;</script>
   </head>
@@ -28,23 +30,35 @@
 		
 		<div id="content">
 			
-			<div id="titleBar">
-				<span>Events:</span>
-				<button type="button" class="btn btn-secondary" id="addEventButton">Add Event</button>
-			</div>
-			
+			<button type="button" class="btn btn-secondary" id="addEventButton">Add Event</button>
 			<div id="eventsDiv"></div>
 			<div id="calenderDiv">Calender</div>
 			
 		</div>
 		
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-
-		<!--
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-		-->
+		<!-- The Modal -->
+			<div id="myModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<p>Add a new Event.</p>
+					Title: <input type="text" name="modalTitle" id="modalTitle"><br>
+					Date Due: <input type="date" name="date" id="modalDate"><br>
+					Time Due:
+					<select id="hourSelect">
+					</select>
+					:
+					<select id="minuteSelect">
+					</select>
+					<select id="ampmSelect">
+						<option>AM</option>
+						<option>PM</option>
+					</select>
+					<br>
+					<br>
+					<button type="button" class="btn btn-secondary" id="modalAddEventButton">Add Event</button>
+				</div>
+			</div>
 		
   </body>
 </html>
