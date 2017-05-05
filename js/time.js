@@ -25,3 +25,24 @@ function convertTo12(timeString) {
 	
 	
 }
+
+function calculateDifference(dateTime) {
+	var today = new Date();
+	var event = new Date(dateTime);
+	var milliseconds = event - today;
+	
+	var seconds = Math.floor(milliseconds/1000);
+	var mins = Math.floor(seconds/60);
+	
+	var hours = Math.floor(mins/60);
+	var minsLeft = mins % 60;
+	
+	var daysLeft = Math.floor(hours/24);
+	var hoursLeft = hours % 24;
+	
+	return {
+		"Days": daysLeft,
+		"Hours": hoursLeft,
+		"Mins": minsLeft
+	}
+}

@@ -51,12 +51,29 @@ function displayEvents() {
 	eventsDiv.innerHTML = "";
 	
 	for (var i = 0; i < currentEvents.length; i++) {
+		var difference = calculateDifference(currentEvents[i].Date[0]._text + " " + currentEvents[i].Time[0]._text);
+		var newHTMLLeft = "<br>";
+		
+		if (difference.Days <= 0 && difference.Hours <= 0 && difference.Mins <= 0) {
+			newHTMLLeft = "<br>Event Expired"
+		} else {
+			if (difference.Days !== 0) {
+				newHTMLLeft += difference.Days + " Days ";
+			}
+			if (difference.Hours !== 0) {
+				newHTMLLeft += difference.Hours + " Hours ";
+			}
+			if (difference.Mins !== 0) {
+				newHTMLLeft += difference.Mins + " Mins ";
+			}
+		}
+		
 		var currentHTML = eventsDiv.innerHTML;
-		var newHTMLTitle = "<p>" + currentEvents[i].Title[0]._text + "</p>";
-		var newHTMLDate = "<p>" + currentEvents[i].Date[0]._text + "</p>";
-		var newHTMLTime = "<p>" + currentEvents[i].Time[0]._text + "</p>";
-		var newHTMLFinished = "<p>" + currentEvents[i].Finished[0]._text + "</p>";
-		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLFinished + "<br>";
+		var newHTMLTitle = "<div id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
+		var newHTMLDate = "<div id=\"eventDate\">" + currentEvents[i].Date[0]._text + "</div>";
+		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
+		
+		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLLeft;
 	}
 }
 

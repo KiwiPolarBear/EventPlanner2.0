@@ -30,7 +30,6 @@
 }
 
 #eventsDiv {
-	padding: 5px;
 	margin: 5px;
 	margin-right: 180px;
 	top: 0;
@@ -40,6 +39,20 @@
 	position: absolute;
 	overflow-y:auto;
 	border: solid;
+}
+
+#event {
+	border: solid;
+	margin: 5px;
+}
+
+#eventDate {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+#eventTime {
+	display: inline-block;
 }
 
 #addEventButton {
