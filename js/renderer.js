@@ -53,9 +53,10 @@ function displayEvents() {
 	for (var i = 0; i < currentEvents.length; i++) {
 		var difference = calculateDifference(currentEvents[i].Date[0]._text + " " + currentEvents[i].Time[0]._text);
 		var newHTMLLeft = "<br>";
-		
+		var style = "";
 		if (difference.Days <= 0 && difference.Hours <= 0 && difference.Mins <= 0) {
 			newHTMLLeft = "<br>Event Expired"
+			style = "style=\"background: green;\""
 		} else {
 			if (difference.Days !== 0) {
 				newHTMLLeft += difference.Days + " Days ";
@@ -69,12 +70,41 @@ function displayEvents() {
 		}
 		
 		var currentHTML = eventsDiv.innerHTML;
-		var newHTMLTitle = "<div id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
+		var newHTMLTitle = "<div " + style + " id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
 		var newHTMLDate = "<div id=\"eventDate\">" + currentEvents[i].Date[0]._text + "</div>";
 		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
+		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
+		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEvent(this)\" id=\"eventDeleteButton\">Delete</button>"
+		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\">Edit</button>"
+		var button3HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventDoneButton\">Done</button>"
 		
-		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLLeft;
+		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLLeft + index + buttonHTML + button2HTML + button3HTML;
 	}
+}
+
+function deleteEvent(button) {
+	var value = confirm("Are you sure you want to delete this event?");
+	if (value == true) {
+			var index = button.parentElement.getElementsByTagName("input")[0].value;
+			currentEvents.splice(index, 1);
+			sortEvents();
+	}
+}
+
+function sortEvents() {
+	currentEvents.sort(compare);
+	saveEvents();
+	displayEvents();
+}
+
+function compare(a, b) {
+	aDate = new Date(a.Date[0]._text + " " + a.Time[0]._text);
+	bDate = new Date(b.Date[0]._text + " " + b.Time[0]._text);
+  if (aDate.getTime() < bDate.getTime())
+     return -1;
+  if (aDate.getTime() > bDate.getTime())
+    return 1;
+  return 0;
 }
 
 function saveEvents() {
@@ -87,7 +117,7 @@ function loadEventsAsJSON(filepath, callback) {
 			callback(false);
 		} else {
 			currentEvents = JSON.parse(data);
-			displayEvents();
+			sortEvents();
 			callback(true);
 		}
 	});
@@ -99,7 +129,7 @@ function loadEventsAsXML(filepath, callback) {
 			callback(false);
 		} else {
 			currentEvents = xmlToJSON.parseString(data).SavedEvents[0].Event;
-			displayEvents();
+			sortEvents();
 			callback(true);
 		}
 	});
@@ -120,8 +150,7 @@ function addEvent(title, date, time) {
 			 {"_text" : false}
 		]
 	})
-	saveEvents();
-	displayEvents();
+	sortEvents();
 }
 
 document.onreadystatechange = function () {
