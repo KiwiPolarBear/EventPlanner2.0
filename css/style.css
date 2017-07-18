@@ -11,6 +11,12 @@
 	right: 6px;
 }
 
+#titleTxt {
+	color: aliceblue;
+	font-size: 20px;
+	margin: 10px;
+}
+
 #min-btn, #max-btn, #close-btn {
 	border-radius: 0px;
 	border-bottom-left-radius: 5px;
@@ -64,8 +70,7 @@
 	position: absolute;
 }
 
-#calenderDiv {
-	padding: 5px;
+#calendarDiv {
 	float: right;
 	margin: 5px;
 	margin-top: 56px;
@@ -75,7 +80,11 @@
 	top: 0;
 	width: 160px;
 	overflow: hidden;
+}
+
+#calendarDate {
 	border: solid;
+	margin-bottom: 5px;
 }
 
 /* ========================================================== Modal ============================================================ */

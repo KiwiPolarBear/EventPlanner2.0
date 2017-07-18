@@ -21,9 +21,23 @@ function convertTo24(timeString, ampm) {
 
 function convertTo12(timeString) {
 	var hour = parseInt(timeString.substring(0, 2));
-	var minute = parseInt(timeString.substring(3, 4));
+	var minute = parseInt(timeString.substring(3));
+	var ampm = "AM";
 	
+	if (hour >= 12) {
+		ampm = "PM";	
+	}
+	if (hour > 12) {
+		hour = hour - 12;
+	}
+	if (minute < 10) {
+		minute = "0" + minute;
+	} 
+	if (hour < 10) {
+		hour = "0" + hour;
+	}
 	
+	return hour + ":" + minute + " " + ampm;
 }
 
 function calculateDifference(dateTime) {
