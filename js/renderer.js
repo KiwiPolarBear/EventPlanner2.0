@@ -71,9 +71,23 @@ function displayEvents() {
 		var difference = calculateDifference(currentEvents[i].Date[0]._text + " " + currentEvents[i].Time[0]._text);
 		var newHTMLLeft = "<br>";
 		var style = "";
+		
+		var currentHTML = eventsDiv.innerHTML;
+		var newHTMLDate = "<div id=\"eventDate\">" + currentEvents[i].Date[0]._text + "</div>";
+		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
+		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
+		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEventPressed(this)\" id=\"eventDeleteButton\">Delete</button>"
+		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\" onclick=\"editEventPressed(this)\">Edit</button>"
+		var button3HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventDoneButton\" onclick=\"donePressed(this)\">Done</button>"
+		
 		if (difference.Days <= 0 && difference.Hours <= 0 && difference.Mins <= 0) {
 			newHTMLLeft = "<br>Event Expired"
 			style = "style=\"background: green;\""
+			button3HTML = "";
+		} else if (currentEvents[i].Finished[0]._text) {
+			newHTMLLeft = "<br>Event Completed"
+			style = "style=\"background: blue;\""
+			button3HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventUndoButton\" onclick=\"undoPressed(this)\">Undo</button>"
 		} else {
 			if (difference.Days !== 0) {
 				newHTMLLeft += difference.Days + " Days ";
@@ -86,14 +100,7 @@ function displayEvents() {
 			}
 		}
 		
-		var currentHTML = eventsDiv.innerHTML;
 		var newHTMLTitle = "<div " + style + " id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
-		var newHTMLDate = "<div id=\"eventDate\">" + currentEvents[i].Date[0]._text + "</div>";
-		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
-		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
-		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEventPressed(this)\" id=\"eventDeleteButton\">Delete</button>"
-		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\" onclick=\"editEventPressed(this)\">Edit</button>"
-		var button3HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventDoneButton\">Done</button>"
 		
 		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLLeft + index + buttonHTML + button2HTML + button3HTML;
 	}
@@ -128,6 +135,18 @@ function editEventPressed(button) {
 	console.log(time.substring(3));
 }
 
+function donePressed(button) {
+	var index = button.parentElement.getElementsByTagName("input")[0].value;
+	currentEvents[index].Finished[0]._text = true;
+	sortEvents();
+}
+
+function undoPressed(button) {
+	var index = button.parentElement.getElementsByTagName("input")[0].value;
+	currentEvents[index].Finished[0]._text = false;
+	sortEvents();
+}
+
 /* Organises the events by date, saves them and then displays them */
 function sortEvents() {
 	currentEvents.sort(compare);
@@ -137,12 +156,16 @@ function sortEvents() {
 
 /* A function used to compare two events by date */
 function compare(a, b) {
-	aDate = new Date(a.Date[0]._text + " " + a.Time[0]._text);
-	bDate = new Date(b.Date[0]._text + " " + b.Time[0]._text);
-  if (aDate.getTime() < bDate.getTime())
-     return -1;
-  if (aDate.getTime() > bDate.getTime())
-    return 1;
+	var aDate = new Date(a.Date[0]._text + " " + a.Time[0]._text);
+	var bDate = new Date(b.Date[0]._text + " " + b.Time[0]._text);
+	
+	var aBool = a.Finished[0]._text;
+	var bBool = b.Finished[0]._text;
+	
+	if (aBool && !bBool) return -1;
+	if (bBool && !aBool) return 1;
+  if (aDate.getTime() < bDate.getTime()) return -1;
+  if (aDate.getTime() > bDate.getTime()) return 1;
   return 0;
 }
 
