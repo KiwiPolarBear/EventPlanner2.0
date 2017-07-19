@@ -40,18 +40,17 @@
 		<!-- Add Event Modal -->
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
-				<div class="modal-content">
+				<div class="modal-content" id="modalContent">
 					<span class="close">&times;</span>
-					<p>Add a new Event.</p>
-					Title: <input type="text" name="modalTitle" id="modalTitle"><br>
-					Date Due: <input type="date" name="date" id="modalDate"><br>
-					Time Due:
-					<select id="hourSelect">
+					<div id="modalTitleText">Add Event</div><br>
+					<span id="modalText">Title</span><input type="text" class="form-control" id="modalTitle" placeholder=""><br>
+					<span id="modalText">Date Due</span><input type="date" class="form-control" id="modalDate" placeholder="Date"><br>
+					<span id="modalText">Time Due</span><br>
+					<select class="form-control" id="hourSelect">
 					</select>
-					:
-					<select id="minuteSelect">
+					<select class="form-control" id="minuteSelect">
 					</select>
-					<select id="ampmSelect">
+					<select class="form-control" id="ampmSelect">
 						<option>AM</option>
 						<option>PM</option>
 					</select>
@@ -64,18 +63,17 @@
 		<!-- Edit Event Modal -->
 			<div id="editModal" class="modal">
 				<!-- Modal content -->
-				<div class="modal-content">
+				<div class="modal-content" id="modalContent">
 					<span class="close">&times;</span>
-					<p>Edit the Event</p>
-					Title: <input type="text" name="modalTitle" id="modalTitleEdit"><br>
-					Date Due: <input type="date" name="date" id="modalDateEdit"><br>
-					Time Due:
-					<select id="hourSelectEdit">
+					<div id="modalTitleText">Edit Event</div><br>
+					<span id="modalText">Title</span><input type="text" class="form-control" id="modalTitleEdit" placeholder=""><br>
+					<span id="modalText">Date Due</span><input type="date" class="form-control" id="modalDateEdit" placeholder="Date"><br>
+					<span id="modalText">Time Due</span><br>
+					<select class="form-control" id="hourSelectEdit">
 					</select>
-					:
-					<select id="minuteSelectEdit">
+					<select class="form-control" id="minuteSelectEdit">
 					</select>
-					<select id="ampmSelectEdit">
+					<select class="form-control" id="ampmSelectEdit">
 						<option>AM</option>
 						<option>PM</option>
 					</select>

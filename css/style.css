@@ -73,8 +73,12 @@
 }
 
 #event {
-	border: solid;
 	margin-bottom: 5px;
+	float: left;
+	-webkit-box-sizing: border-box;
+	width: 90%;
+	height: 120px;
+	background: #09364B;
 }
 
 #eventTitle {
@@ -82,33 +86,38 @@
 	margin-left: 8px;
 	font-size: 18px;
 	font-weight: bold;
+	color: aliceblue;
 }
 
 #eventDate {
 	display: inline-block;
 	margin: 5px;
 	margin-left: 8px;
+	color: aliceblue;
 }
 
 #eventTime {
 	margin: 5px;
 	margin-left: 8px;
 	display: inline-block;
+	color: aliceblue;
 }
 
 #timeLeftSpan {
 	margin: 5px;
 	margin-left: 8px;
+	color: aliceblue;
+	float: left;
 }
 
 #eventDeleteButton, #eventEditButton, #eventDoneButton, #eventUndoButton {
 	margin: 5px;
-	margin-left: 8px;
 	width: 70px;
 	background: #686766;
 	font-size: 15px;
 	font-weight: bold;
 	color: aliceblue;
+	float: right;
 }
 
 #addEventButton {
@@ -162,6 +171,13 @@
 	color: aliceblue;
 }
 
+#colourDiv {
+	width: 10%;
+	height: 120px;
+	float: left;
+	-webkit-box-sizing: border-box;
+}
+
 /* ========================================================== Modal ============================================================ */
 
 /* The Modal (background) */
@@ -183,13 +199,13 @@
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid aliceblue;
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
+    color: aliceblue;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -200,4 +216,34 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#modalAddEventButton, #modalEditEventButton {
+	background: #686766;
+	font-size: 15px;
+	font-weight: bold;
+	color: aliceblue;
+}
+
+#modalContent {
+	background-color: #201F1D;
+	border: 2px solid aliceblue;
+}
+
+#modalTitleText {
+	font-size: 20px;
+	font-weight: bold;
+	color: aliceblue;
+	margin-bottom: 5px;
+}
+
+#modalText {
+	font-size: 15px;
+	font-weight: bold;
+	color: aliceblue;
+}
+
+#hourSelect, #hourSelectEdit, #minuteSelect, #minuteSelectEdit, #ampmSelect, #ampmSelectEdit{
+	width: 70px;
+	display: inline-block;
 }
