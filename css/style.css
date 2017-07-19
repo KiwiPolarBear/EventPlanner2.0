@@ -1,13 +1,23 @@
+#document {
+	background: #201F1D;
+}
+
 #navBar {
  	-webkit-app-region: drag;
-	border-radius: 0px;
-	height: 40px;
+	height: 47px;
+	background: #09364B;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	margin:0px;
+  padding:0px;
+	position: absolute;
 }
 
 #title-bar-btns {
 	-webkit-app-region: no-drag;
 	position: fixed;
-	top: 0px;
+	top: 6px;
 	right: 6px;
 }
 
@@ -18,11 +28,13 @@
 }
 
 #min-btn, #max-btn, #close-btn {
-	border-radius: 0px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	border-radius: 5px;
 	width: 40px;
 	height: 35px;
+	background: #686766;
+	font-size: 15px;
+	font-weight: bold;
+	color: aliceblue;
 }
 
 #content {
@@ -44,21 +56,59 @@
 	right: 0;
 	position: absolute;
 	overflow-y:auto;
-	border: solid;
+}
+
+#eventsDiv::-webkit-scrollbar {
+    width: 12px;
+}
+
+#eventsDiv::-webkit-scrollbar-track {
+    background-color: #201F1D; 
+    border-radius: 10px;
+}
+
+#eventsDiv::-webkit-scrollbar-thumb {
+	background-color: #686766; 
+    border-radius: 10px;
 }
 
 #event {
 	border: solid;
+	margin-bottom: 5px;
+}
+
+#eventTitle {
 	margin: 5px;
+	margin-left: 8px;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 #eventDate {
 	display: inline-block;
-	margin-right: 5px;
+	margin: 5px;
+	margin-left: 8px;
 }
 
 #eventTime {
+	margin: 5px;
+	margin-left: 8px;
 	display: inline-block;
+}
+
+#timeLeftSpan {
+	margin: 5px;
+	margin-left: 8px;
+}
+
+#eventDeleteButton, #eventEditButton, #eventDoneButton, #eventUndoButton {
+	margin: 5px;
+	margin-left: 8px;
+	width: 70px;
+	background: #686766;
+	font-size: 15px;
+	font-weight: bold;
+	color: aliceblue;
 }
 
 #addEventButton {
@@ -68,6 +118,10 @@
 	top: 0;
 	width: 160px;
 	position: absolute;
+	background: #686766;
+	font-size: 15px;
+	font-weight: bold;
+	color: aliceblue;
 }
 
 #calendarDiv {
@@ -85,6 +139,27 @@
 #calendarDate {
 	border: solid;
 	margin-bottom: 5px;
+}
+
+#dateNumber {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+	color: aliceblue;
+}
+
+#dateName {
+	font-size: 13px;
+	float: right;
+	margin: 5px;
+	color: aliceblue;
+}
+
+#dateMonth {
+	font-size: 13px;
+	margin: 5px;
+	margin-top: 20px;
+	color: aliceblue;
 }
 
 /* ========================================================== Modal ============================================================ */
