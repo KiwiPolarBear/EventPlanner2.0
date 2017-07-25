@@ -84,11 +84,6 @@ function displayEvents() {
 		
 		var currentHTML = eventsDiv.innerHTML;
 		var theDate = new Date(currentEvents[i].Date[0]._text + " " + currentEvents[i].Time[0]._text)
-		var newHTMLDate = "<div id=\"eventDate\">" + theDate.getDate() + "/" + (theDate.getMonth() + 1) + "/" + theDate.getFullYear() + "</div>";
-		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
-		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
-		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEventPressed(this)\" id=\"eventDeleteButton\">Delete</button>"
-		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\" onclick=\"editEventPressed(this)\">Edit</button>"
 		var button3HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventDoneButton\" onclick=\"donePressed(this)\">Done</button>"
 		
 		if (difference.Days <= 0 && difference.Hours <= 0 && difference.Mins <= 0) {
@@ -119,8 +114,13 @@ function displayEvents() {
 		}
 		
 		var newHTMLTitle = "<div id=\"colourDiv\" " + style + "></div><div id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
+		var newHTMLDate = "<div id=\"eventDate\">" + theDate.getDate() + "/" + (theDate.getMonth() + 1) + "/" + theDate.getFullYear() + "</div>";
+		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
+		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEventPressed(this)\" id=\"eventDeleteButton\">Delete</button>"
+		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\" onclick=\"editEventPressed(this)\">Edit</button>"
+		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
 		
-		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLLeft + index + buttonHTML + button2HTML + button3HTML;
+		eventsDiv.innerHTML = currentHTML + newHTMLTitle + newHTMLDate + newHTMLTime + newHTMLLeft + buttonHTML + button2HTML + button3HTML + index;
 	}
 }
 
