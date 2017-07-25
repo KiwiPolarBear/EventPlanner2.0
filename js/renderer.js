@@ -113,14 +113,9 @@ function displayEvents() {
 			}
 		}
 		
-		var time = convertTo12(currentEvents[i].Time[0]._text);
-		var hour = time.substring(0, 2);
-		var rest = time.substring(2);
-		var formattedTime = parseInt(hour) + rest;
-		
 		var newHTMLTitle = "<div id=\"colourDiv\" " + style + "></div><div id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
 		var newHTMLDate = "<div id=\"eventDate\">" + theDate.getDate() + "/" + (theDate.getMonth() + 1) + "/" + theDate.getFullYear() + "</div>";
-		var newHTMLTime = "<div id=\"eventTime\">" + formattedTime + "</div>";
+		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
 		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEventPressed(this)\" id=\"eventDeleteButton\">Delete</button>"
 		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\" onclick=\"editEventPressed(this)\">Edit</button>"
 		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
