@@ -113,9 +113,14 @@ function displayEvents() {
 			}
 		}
 		
+		var time = convertTo12(currentEvents[i].Time[0]._text);
+		var hour = time.substring(0, 2);
+		var rest = time.substring(2);
+		var formattedTime = parseInt(hour) + rest;
+		
 		var newHTMLTitle = "<div id=\"colourDiv\" " + style + "></div><div id=\"event\"><div id=\"eventTitle\">" + currentEvents[i].Title[0]._text + "</div>";
 		var newHTMLDate = "<div id=\"eventDate\">" + theDate.getDate() + "/" + (theDate.getMonth() + 1) + "/" + theDate.getFullYear() + "</div>";
-		var newHTMLTime = "<div id=\"eventTime\">" + currentEvents[i].Time[0]._text + "</div>";
+		var newHTMLTime = "<div id=\"eventTime\">" + formattedTime + "</div>";
 		var buttonHTML = "<button type=\"button\" class=\"btn btn-secondary\" onclick=\"deleteEventPressed(this)\" id=\"eventDeleteButton\">Delete</button>"
 		var button2HTML = "<button type=\"button\" class=\"btn btn-secondary\" id=\"eventEditButton\" onclick=\"editEventPressed(this)\">Edit</button>"
 		var index = "<input type=\"hidden\" name=\"index\" value=" + i + ">"
@@ -216,9 +221,6 @@ function editEventPressed(button) {
 	updateEditModalHour(parseInt(time.substring(0,2)));
 	updateEditModalMinute(time.substring(3, 5));
 	updateEditModalAMPM(time.substring(6));
-	console.log(time);
-	console.log(time.substring(0,2));
-	console.log(time.substring(3));
 }
 
 /* Handles the done button being pressed on an event */
